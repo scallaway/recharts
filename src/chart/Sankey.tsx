@@ -344,6 +344,7 @@ class Props implements PresentationAttributes<any>, DOMAttributesWithProps<any, 
   margin: Margin = { top: 5, right: 5, bottom: 5, left: 5 };
 
   onClick: any;
+  onDoubleClick: any;
 
   onMouseEnter: any;
   onMouseLeave: any;
@@ -450,6 +451,11 @@ class Sankey extends PureComponent<Props, State> {
   handleClick(el: React.ReactElement, type: string, e: any) {
     const { onClick } = this.props;
     if (onClick) onClick(el, type, e);
+  }
+
+  handleDoubleClick(el: React.ReactElement, type: string, e: any) {
+    const { onDoubleClick } = this.props;
+    if (onDoubleClick) onDoubleClick(el, type, e);
   }
 
   static renderLinkItem(option: any, props: Props) {

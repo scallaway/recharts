@@ -234,6 +234,7 @@ class Props {
   onMouseEnter: (node: TreemapNode, e: any) => {};
   onMouseLeave: (node: TreemapNode, e: any) => {};
   onClick: (node: TreemapNode) => {};
+  onDoubleClick: (node: TreemapNode) => {};
 
   isAnimationActive: boolean = !isSsr();
   isUpdateAnimationActive: boolean = !isSsr();
@@ -396,6 +397,33 @@ class Treemap extends PureComponent<Props, State> {
     }
     if (onClick) {
       onClick(node);
+    }
+  }
+
+  handleDoubleClick(node: TreemapNode) {
+    const { onDoubleClick, type } = this.props;
+    if (type === 'nest' && node.children) {
+      const { width, height, dataKey, aspectRatio } = this.props;
+      const root = computeNode({
+        depth: 0,
+        node: { ...node, x: 0, y: 0, width, height },
+        index: 0,
+        valueKey: dataKey,
+      });
+
+      const formatRoot = squarify(root, aspectRatio);
+
+      const { nestIndex } = this.state;
+      nestIndex.push(node);
+
+      this.setState({
+        formatRoot,
+        currentRoot: root,
+        nestIndex,
+      });
+      if (onDoubleClick) {
+        onDoubleClick(node);
+      }
     }
   }
 

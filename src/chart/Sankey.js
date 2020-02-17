@@ -444,6 +444,11 @@ class Sankey extends PureComponent {
     if (onClick) onClick(el, type, e);
   }
 
+  handleDoubleClick(el, type, e) {
+    const { onDoubleClick } = this.props;
+    if (onDoubleClick) onDoubleClick(el, type, e);
+  }
+
   static renderLinkItem(option, props) {
     if (React.isValidElement(option)) {
       return React.cloneElement(option, props);

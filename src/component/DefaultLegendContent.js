@@ -31,6 +31,7 @@ class DefaultLegendContent extends PureComponent {
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
     onClick: PropTypes.func,
+    onDoubleClick: PropTypes.func,
   };
 
   static defaultProps = {

@@ -160,6 +160,7 @@ export const PRESENTATION_ATTRIBUTES = {
 
 export const EVENT_ATTRIBUTES = {
   onClick: PropTypes.func,
+  onDoubleClick: PropTypes.func,
   onMouseDown: PropTypes.func,
   onMouseUp: PropTypes.func,
   onMouseOver: PropTypes.func,
@@ -175,6 +176,7 @@ export const EVENT_ATTRIBUTES = {
 
 const REACT_BROWSER_EVENT_MAP = {
   click: 'onClick',
+  doubleClick: 'onDoubleClick',
   mousedown: 'onMouseDown',
   mouseup: 'onMouseUp',
   mouseover: 'onMouseOver',

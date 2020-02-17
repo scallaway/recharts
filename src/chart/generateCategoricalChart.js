@@ -73,6 +73,7 @@ const generateCategoricalChart = ({
       ]),
       defaultShowTooltip: PropTypes.bool,
       onClick: PropTypes.func,
+      onDoubleClick: PropTypes.func,
       onMouseLeave: PropTypes.func,
       onMouseEnter: PropTypes.func,
       onMouseMove: PropTypes.func,
@@ -1066,6 +1067,16 @@ const generateCategoricalChart = ({
         const mouse = this.getMouseInfo(e);
 
         onClick(mouse, e);
+      }
+    };
+
+    handleDoubleClick = (e) => {
+      const { onDoubleClick } = this.props;
+
+      if (_.isFunction(onClick)) {
+        const mouse = this.getMouseInfo(e);
+
+        onDoubleClick(mouse, e);
       }
     };
 

@@ -226,6 +226,7 @@ class Treemap extends PureComponent {
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
     onClick: PropTypes.func,
+    onDoubleClick: PropTypes.func,
 
     isAnimationActive: PropTypes.bool,
     isUpdateAnimationActive: PropTypes.bool,
@@ -395,6 +396,33 @@ class Treemap extends PureComponent {
     }
     if (onClick) {
       onClick(node);
+    }
+  }
+
+  handleDoubleClick(node) {
+    const { onDoubleClick, type } = this.props;
+    if (type === 'nest' && node.children) {
+      const { width, height, dataKey, aspectRatio } = this.props;
+      const root = computeNode({
+        depth: 0,
+        node: { ...node, x: 0, y: 0, width, height },
+        index: 0,
+        valueKey: dataKey,
+      });
+
+      const formatRoot = squarify(root, aspectRatio);
+
+      const { nestIndex } = this.state;
+      nestIndex.push(node);
+
+      this.setState({
+        formatRoot,
+        currentRoot: root,
+        nestIndex,
+      });
+    }
+    if (onDoubleClick) {
+      onDoubleClick(node);
     }
   }
 

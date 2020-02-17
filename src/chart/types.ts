@@ -19,6 +19,7 @@ interface CategoricalChartPropTypes {
   children?: any;
   defaultShowTooltip?: boolean;
   onClick?: any;
+  onDoubleClick?: any;
   onMouseLeave?: any;
   onMouseEnter?: any;
   onMouseMove?: any;

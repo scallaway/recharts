@@ -39,6 +39,7 @@ export interface Props<TValue, TID> {
   onMouseEnter?: (event: MouseEvent) => void;
   onMouseLeave?: (event: MouseEvent) => void;
   onClick?: (event: MouseEvent) => void;
+  onDoubleClick?: (event: MouseEvent) => void;
 }
 
 class DefaultLegendContent<TValue, TID> extends PureComponent<Props<TValue, TID>> {

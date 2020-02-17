@@ -1079,6 +1079,16 @@ const generateCategoricalChart = ({
       }
     };
 
+    handleDoubleClick = (e: any) => {
+      const { onDoubleClick } = this.props;
+
+      if (_.isFunction(onDoubleClick)) {
+        const mouse = this.getMouseInfo(e);
+
+        onDoubleClick(mouse, e);
+      }
+    };
+
     handleMouseDown = (e: any) => {
       const { onMouseDown } = this.props;
 
@@ -1401,7 +1411,7 @@ const generateCategoricalChart = ({
 
     static renderActiveDot (option: any, props: any): React.ReactElement {
       let dot;
-    
+
       if (isValidElement(option)) {
         dot = cloneElement(option, props);
       } else if (_.isFunction(option)) {
@@ -1409,7 +1419,7 @@ const generateCategoricalChart = ({
       } else {
         dot = <Dot {...props} />;
       }
-    
+
       return (
         <Layer className="recharts-active-dot" key={props.key}>
           {dot}

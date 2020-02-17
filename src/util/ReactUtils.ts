@@ -6,6 +6,7 @@ import { shallowEqual } from './ShallowEqual';
 
 const REACT_BROWSER_EVENT_MAP: any = {
   click: 'onClick',
+  doubleClick: 'onDoubleClick',
   mousedown: 'onMouseDown',
   mouseup: 'onMouseUp',
   mouseover: 'onMouseOver',
